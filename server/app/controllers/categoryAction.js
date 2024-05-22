@@ -26,7 +26,7 @@ const browse = (req, res) => {
 /* Here you code */
 
 const read = (req, res) => {
-  const parseId = parseInt(req.paramas.id, 3);
+  const parseId = parseInt(req.params.id, 10);
 
   const category = categories.find((p) => p.id === parseId);
 
