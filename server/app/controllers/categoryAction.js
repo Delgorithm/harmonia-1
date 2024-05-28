@@ -1,4 +1,5 @@
 // Some data to make the trick
+const tables = require("../../database/tables");
 
 const categories = [
   {
@@ -12,16 +13,10 @@ const categories = [
 ];
 
 // Declare the actions
-const browse = (req, res) => {
-  if (req.query.q != null) {
-    const filteredCategory = categories.filter((category) =>
-      category.synopsis.includes(req.query.q)
-    );
+const browse = async (req, res) => {
+  const categoriesFromDB = await tables.category.readAll();
 
-    res.json(filteredCategory);
-  } else {
-    res.json(categories);
-  }
+  res.json(categoriesFromDB);
 };
 /* Here you code */
 
